@@ -1,0 +1,5 @@
+[assembly: XmlnsDefinition("http://mauimotion.com", "MauiMotion.API")]
+[assembly: XmlnsDefinition("http://mauimotion.com", "MauiMotion.Behaviors")]
+[assembly: XmlnsDefinition("http://mauimotion.com", "MauiMotion.Animations")]
+[assembly: XmlnsDefinition("http://mauimotion.com", "MauiMotion.Core.Enums")]
+[assembly: Microsoft.Maui.Controls.XmlnsPrefix("http://mauimotion.com", "mm")]

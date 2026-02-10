@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mm="http://mauimotion.com"
+             xmlns:mauiMotion="clr-namespace:MauiMotion.Sample"
+             xmlns:system="clr-namespace:System;assembly=System.Runtime"
+             xmlns:customAnimations="clr-namespace:MauiMotion.Sample.CustomAnimations"
+             x:Class="MauiMotion.Sample.ShowcasePage"
+             x:DataType="mauiMotion:ShowcaseViewModel"
+             BackgroundColor="#F5F5F5"
+             SafeAreaEdges="Container"
+             Title="MauiMotion Gallery">
+    <ContentPage.Resources>
+        <customAnimations:Spin360Animation x:Key="MySpin" />
+    </ContentPage.Resources>
+    <Grid RowDefinitions="Auto, Auto, Auto, *">
+
+        <Border Grid.Row="0"
+                Margin="20,20,20,10"
+                Padding="25"
+                StrokeShape="RoundRectangle 20"
+                BackgroundColor="#512BD4"
+                StrokeThickness="0">
+            
+            <Border.Shadow>
+                <Shadow Brush="Black" Opacity="0.2" Offset="0,5" Radius="10" />
+            </Border.Shadow>
+
+            <VerticalStackLayout Spacing="5"
+                                 mm:Motion.Animation="SlideInTop"
+                                 mm:Motion.Duration="800"
+                                 mm:Motion.Easing="CubicOut">
+                
+                <Label Text="MauiMotion"
+                       FontSize="28"
+                       FontAttributes="Bold"
+                       TextColor="White"
+                       HorizontalOptions="Center" />
+                
+                <Label Text="The declarative animation engine."
+                       FontSize="14"
+                       TextColor="#E0E0FF"
+                       HorizontalOptions="Center" />
+            </VerticalStackLayout>
+        </Border>
+        
+        <VerticalStackLayout Grid.Row="1" Spacing="5" Padding="5">
+            <BoxView Color="LightGray" HeightRequest="20" WidthRequest="200"
+                     mm:Motion.Animation="Skeleton" mm:Motion.RepeatCount="-1" />
+    
+            <BoxView Color="LightGray" HeightRequest="100" 
+                     mm:Motion.Animation="Skeleton" mm:Motion.RepeatCount="-1" />
+
+            <Image Source="sync_icon.png" WidthRequest="40"
+                   mm:Motion.CustomAnimation="{StaticResource MySpin}" mm:Motion.RepeatCount="-1" 
+                   mm:Motion.Easing="Linear" />
+        </VerticalStackLayout>
+
+        <Grid Grid.Row="2" 
+              ColumnDefinitions="*,*" 
+              ColumnSpacing="15" 
+              Padding="20,10">
+
+            <Button Grid.Column="0"
+                    Text="Tap to Shake"
+                    BackgroundColor="White"
+                    TextColor="#333"
+                    BorderColor="#E0E0E0"
+                    BorderWidth="1"
+                    HeightRequest="60"
+                    
+                    mm:Motion.Animation="FadeIn" 
+                    mm:Motion.Delay="300">
+                
+                <Button.Shadow>
+                    <Shadow Brush="Black" Opacity="0.1" Offset="0,2" Radius="5"/>
+                </Button.Shadow>
+
+                <Button.Behaviors>
+                    <mm:MotionBehavior EventName="Clicked" 
+                                       Animation="Shake" 
+                                       Duration="400" />
+                </Button.Behaviors>
+            </Button>
+
+            <Button Grid.Column="1"
+                    Text="Tap to Flip"
+                    BackgroundColor="#2D2D2D"
+                    TextColor="White"
+                    HeightRequest="60"
+                    
+                    mm:Motion.Animation="FadeIn" 
+                    mm:Motion.Delay="400">
+                
+                <Button.Shadow>
+                    <Shadow Brush="Black" Opacity="0.2" Offset="0,2" Radius="5"/>
+                </Button.Shadow>
+
+                <Button.Behaviors>
+                    <mm:MotionBehavior EventName="Clicked" 
+                                       Animation="FlipInX" 
+                                       Duration="600" />
+                </Button.Behaviors>
+            </Button>
+        </Grid>
+
+        <CollectionView Grid.Row="3"
+                        ItemsSource="{Binding Items}"
+                        Margin="0,10,0,0">
+            
+            <CollectionView.Footer>
+                <BoxView HeightRequest="100" Color="Transparent" />
+            </CollectionView.Footer>
+            
+            <CollectionView.Header>
+                <Label Text="Waterfall List" 
+                       Margin="25,0,0,10" 
+                       TextColor="#666" 
+                       FontAttributes="Bold"/>
+            </CollectionView.Header>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="system:String">
+                    <Grid Padding="20,5">
+                        
+                        <Border StrokeShape="RoundRectangle 10"
+                                BackgroundColor="White"
+                                Padding="15"
+                                StrokeThickness="0">
+                            
+                            <Border.Shadow>
+                                <Shadow Brush="Black" Opacity="0.05" Offset="0,2" Radius="5" />
+                            </Border.Shadow>
+
+                            <Border.Behaviors>
+                                <mm:EntranceBehavior Animation="SlideInBottom" 
+                                                     Duration="800" 
+                                                     Stagger="500" 
+                                                     OneTime="True" />
+                            </Border.Behaviors>
+
+                            <HorizontalStackLayout Spacing="15">
+                                <BoxView Color="#512BD4" 
+                                         WidthRequest="40" 
+                                         HeightRequest="40" 
+                                         CornerRadius="20" />
+                                
+                                <VerticalStackLayout VerticalOptions="Center">
+                                    <Label Text="{Binding .}" FontAttributes="Bold" TextColor="#333" />
+                                    <Label Text="Smooth entrance animation" FontSize="12" TextColor="#999" />
+                                </VerticalStackLayout>
+                            </HorizontalStackLayout>
+                            
+                        </Border>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button Grid.Row="3"
+                Text="↻"
+                FontSize="24"
+                WidthRequest="60"
+                HeightRequest="60"
+                CornerRadius="30"
+                BackgroundColor="#512BD4"
+                TextColor="White"
+                HorizontalOptions="End"
+                VerticalOptions="End"
+                Command="{Binding ReloadCommand}"
+                Margin="20,20,20,50"
+                
+                mm:Motion.Animation="ScaleIn"
+                mm:Motion.Delay="1000"
+                mm:Motion.Easing="SpringOut">
+            <Button.Shadow>
+                <Shadow Brush="Black" Opacity="0.3" Offset="0,4" Radius="10"/>
+            </Button.Shadow>
+        </Button>
+
+    </Grid>
+</ContentPage>

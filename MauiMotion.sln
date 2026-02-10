@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiMotion", "MauiMotion\MauiMotion.csproj", "{835623D8-0EF4-49DA-A466-ABF95EC4EC21}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiMotion.Sample", "MauiMotion.Sample\MauiMotion.Sample.csproj", "{F38D7741-30D6-4D5B-B573-0920CAFD9A74}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{835623D8-0EF4-49DA-A466-ABF95EC4EC21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{835623D8-0EF4-49DA-A466-ABF95EC4EC21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{835623D8-0EF4-49DA-A466-ABF95EC4EC21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{835623D8-0EF4-49DA-A466-ABF95EC4EC21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F38D7741-30D6-4D5B-B573-0920CAFD9A74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F38D7741-30D6-4D5B-B573-0920CAFD9A74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F38D7741-30D6-4D5B-B573-0920CAFD9A74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F38D7741-30D6-4D5B-B573-0920CAFD9A74}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
