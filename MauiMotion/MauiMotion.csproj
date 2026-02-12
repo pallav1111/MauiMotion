@@ -18,7 +18,7 @@
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <Optimize>true</Optimize>
 
-        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <Version>0.0.1</Version>
     </PropertyGroup>
     
     <ItemGroup>
