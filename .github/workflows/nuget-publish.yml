@@ -38,5 +38,5 @@ jobs:
         run: dotnet pack MauiMotion/MauiMotion.csproj --configuration Release --output $PACKAGE_OUTPUT_PATH
 
       - name: Publish to NuGet
+        if: github.event_name == 'release' || github.event_name == 'workflow_dispatch'
         run: dotnet nuget push $PACKAGE_OUTPUT_PATH/*.nupkg --api-key $NUGET_API_KEY --source https://api.nuget.org/v3/index.json
-        if: github.event_name == 'release'
