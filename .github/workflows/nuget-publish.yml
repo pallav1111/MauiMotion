@@ -1,47 +1,43 @@
 name: Build & Publish NuGet Package
 
 on:
-  workflow_dispatch:
-    push:
-      branches:
-        - 'main'
-    pull_request:
-      branches:
-        - '*'
-    release:
-      types:
-        - published
+  push:
+    branches: [ main ]
+  pull_request:
+  release:
+    types: [ published ]
 
 jobs:
   build:
-    name: Build & Publish
     runs-on: macos-latest
-    
+
     env:
-      NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
       PACKAGE_OUTPUT_PATH: ./output
-    
+
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '10.0.100'
+          dotnet-version: 8.0.x
 
-      - name: Install MAUI
+      - name: Install MAUI workload
         run: dotnet workload install maui
 
-      - name: Restore dependencies
+      - name: Restore
         run: dotnet restore
 
       - name: Build
-        run: dotnet build MauiMotion/MauiMotion.csproj --configuration Release --no-restore
+        run: dotnet build MauiMotion/MauiMotion.csproj -c Release --no-restore
 
-      - name: Pack NuGet package
-        run: dotnet pack MauiMotion/MauiMotion.csproj --configuration Release --output $PACKAGE_OUTPUT_PATH
+      - name: Pack
+        run: dotnet pack MauiMotion/MauiMotion.csproj -c Release -o $PACKAGE_OUTPUT_PATH --no-build
 
       - name: Publish to NuGet
-        if: github.event_name == 'release'
-        run: dotnet nuget push $PACKAGE_OUTPUT_PATH/*.nupkg --api-key $NUGET_API_KEY --source https://api.nuget.org/v3/index.json --skip-duplicate
+        if: github.event_name == 'release' && github.event.action == 'published'
+        run: dotnet nuget push "$PACKAGE_OUTPUT_PATH/*.nupkg" \
+          --api-key "${{ secrets.NUGET_API_KEY }}" \
+          --source https://api.nuget.org/v3/index.json \
+          --skip-duplicate
