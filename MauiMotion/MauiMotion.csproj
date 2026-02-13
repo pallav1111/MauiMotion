@@ -12,11 +12,12 @@
         <PackageIcon>icon.png</PackageIcon>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
 
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <Optimize>true</Optimize>
+        <Title>MauiMotion</Title>
+        <Copyright>© 2026 MauiMotion. Licensed under MIT.</Copyright>
     </PropertyGroup>
     
     <ItemGroup>
