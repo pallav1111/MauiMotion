@@ -5,7 +5,7 @@ MauiMotion
 
 **The animation engine for .NET MAUI.**
 
-[![NuGet](https://img.shields.io/nuget/v/MauiMotion.svg)](https://www.nuget.org/packages/MauiMotion) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Platform](https://img.shields.io/badge/Platform-MAUI-purple)](https://dotnet.microsoft.com/apps/maui)
+[![NuGet](https://img.shields.io/nuget/v/Plugin.MauiMotion.svg)](https://www.nuget.org/packages/Plugin.MauiMotion) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Platform](https://img.shields.io/badge/Platform-MAUI-purple)](https://dotnet.microsoft.com/apps/maui)
 
 * * *
 
@@ -14,7 +14,7 @@ MauiMotion
 Installation
 ---------------
 
-    dotnet add package MauiMotion
+    dotnet add package Plugin.MauiMotion
 
 Setup
 --------
