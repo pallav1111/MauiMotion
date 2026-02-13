@@ -1,10 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <PackageId>MauiMotion</PackageId>
-        <Version>0.1.0</Version>
+        <PackageId>Plugin.MauiMotion</PackageId>
+        <Version>0.0.1-preview.1</Version>
         <Authors>Pallav</Authors>
-        <Company>MauiMotion</Company>
         <Description>A high-performance, declarative animation engine for .NET MAUI. Create stunning entry animations, micro-interactions, and complex transitions entirely in XAML.</Description>
         <PackageTags>maui;animation;motion;ui;ux;design;xaml;ios;android</PackageTags>
         <PackageProjectUrl>https://github.com/pallav1111/MauiMotion</PackageProjectUrl>
@@ -12,18 +11,19 @@
         <PackageIcon>icon.png</PackageIcon>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <Title>MauiMotion</Title>
+        <Copyright>© 2026 MauiMotion. Licensed under MIT.</Copyright>
 
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <IsPackable>true</IsPackable>
         <Optimize>true</Optimize>
-        <Title>MauiMotion</Title>
-        <Copyright>© 2026 MauiMotion. Licensed under MIT.</Copyright>
     </PropertyGroup>
     
     <ItemGroup>
-        <None Include="icon.png" Pack="true" PackagePath="\" />
+        <None Include="icon.png" Pack="true" PackagePath="" />
 
-        <None Include="..\README.md" Pack="true" PackagePath="\" />
+        <None Include="..\README.md" Pack="true" PackagePath="" />
     </ItemGroup>
 
 </Project>

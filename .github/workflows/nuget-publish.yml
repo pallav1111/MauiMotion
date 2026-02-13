@@ -12,7 +12,7 @@ jobs:
     runs-on: macos-latest
 
     env:
-      PACKAGE_OUTPUT_PATH: ./output
+      PACKAGE_OUTPUT_PATH: ./artifacts
 
     steps:
       - name: Checkout code
@@ -37,7 +37,7 @@ jobs:
 
       - name: Publish to NuGet
         if: github.event_name == 'release' && github.event.action == 'published'
-        run: dotnet nuget push "$PACKAGE_OUTPUT_PATH/*.nupkg" \
-          --api-key "${{ secrets.NUGET_API_KEY }}" \
-          --source https://api.nuget.org/v3/index.json \
-          --skip-duplicate
+        run: |
+          dotnet nuget push "$PACKAGE_OUTPUT_PATH"/*.nupkg \
+            --api-key "${{ secrets.NUGET_API_KEY }}" \
+            --source https://api.nuget.org/v3/index.json
