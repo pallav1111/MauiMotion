@@ -2,23 +2,21 @@
 
     <PropertyGroup>
         <PackageId>MauiMotion</PackageId>
-        <Version>1.0.0</Version>
+        <Version>0.1.0</Version>
         <Authors>Pallav</Authors>
         <Company>MauiMotion</Company>
         <Description>A high-performance, declarative animation engine for .NET MAUI. Create stunning entry animations, micro-interactions, and complex transitions entirely in XAML.</Description>
         <PackageTags>maui;animation;motion;ui;ux;design;xaml;ios;android</PackageTags>
         <PackageProjectUrl>https://github.com/pallav1111/MauiMotion</PackageProjectUrl>
         <RepositoryUrl>https://github.com/pallav1111/MauiMotion</RepositoryUrl>
-        <PackageLicenseExpression>MIT</PackageLicenseExpression>
-
         <PackageIcon>icon.png</PackageIcon>
         <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
 
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <Optimize>true</Optimize>
-
-        <Version>0.1.0</Version>
     </PropertyGroup>
     
     <ItemGroup>

@@ -1,11 +1,16 @@
 name: Build & Publish NuGet Package
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+    push:
+      branches:
+        - 'main'
+    pull_request:
+      branches:
+        - '*'
     release:
-      types: [ published ]
+      types:
+        - published
 
 jobs:
   build:
@@ -22,8 +27,6 @@ jobs:
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: '10.0.100'
 
       - name: Install MAUI
         run: dotnet workload install maui
@@ -38,5 +41,5 @@ jobs:
         run: dotnet pack MauiMotion/MauiMotion.csproj --configuration Release --output $PACKAGE_OUTPUT_PATH
 
       - name: Publish to NuGet
-        run: dotnet nuget push $PACKAGE_OUTPUT_PATH/*.nupkg --api-key $NUGET_API_KEY --source https://api.nuget.org/v3/index.json
         if: github.event_name == 'release'
+        run: dotnet nuget push $PACKAGE_OUTPUT_PATH/*.nupkg --api-key $NUGET_API_KEY --source https://api.nuget.org/v3/index.json --skip-duplicate
